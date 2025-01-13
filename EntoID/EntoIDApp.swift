@@ -11,7 +11,7 @@ import SwiftUI
 struct EntoIDApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashView()
         }
     }
 }

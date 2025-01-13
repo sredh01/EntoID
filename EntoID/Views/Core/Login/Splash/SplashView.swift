@@ -15,26 +15,31 @@ struct SplashView: View {
     
     
     var body: some View {
-        ZStack {
-            Color.theme.backgroundCream.ignoresSafeArea()
-            
-            VStack {
-                Image(.entoIDLogo)
-                    .scaleEffect(size)
-                    .opacity(opacity)
-                    .onAppear{
-                        withAnimation(.easeIn(duration: 1.5)) {
-                            self.size = 1.0
-                            self.opacity = 1.0
-                        }
-                }
-                    .onAppear() {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                            withAnimation {
-                                self.isActive = true
+        
+        if isActive {
+            LoginView()
+        } else {
+            ZStack {
+                Color.theme.backgroundCream.ignoresSafeArea()
+                
+                VStack {
+                    Image(.entoIDLogo)
+                        .scaleEffect(size)
+                        .opacity(opacity)
+                        .onAppear{
+                            withAnimation(.easeIn(duration: 1.5)) {
+                                self.size = 1.0
+                                self.opacity = 1.0
+                            }
+                    }
+                        .onAppear() {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                withAnimation {
+                                    self.isActive = true
+                                }
                             }
                         }
-                    }
+                }
             }
         }
     }
